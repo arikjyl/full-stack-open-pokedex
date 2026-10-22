@@ -23,7 +23,12 @@ describe('<App />', () => {
     });
     await act(async () => {
       render(
-        <Router>
+        <Router
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <App />
         </Router>,
       );
@@ -38,7 +43,12 @@ describe('<App />', () => {
     axiosMock.get.mockRejectedValueOnce(new Error());
     await act(async () => {
       render(
-        <Router>
+        <Router
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <App />
         </Router>,
       );

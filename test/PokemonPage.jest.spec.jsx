@@ -73,12 +73,26 @@ const next = {
 };
 
 describe('<PokemonPage />', () => {
+  beforeEach(() => {
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   it('should render abilities', async () => {
     axiosMock.get.mockResolvedValueOnce({ data: pokemonList });
 
     await act(async () => {
       render(
-        <MemoryRouter initialEntries={['/pokemon/eevee']}>
+        <MemoryRouter
+          initialEntries={['/pokemon/eevee']}
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <PokemonPage />
         </MemoryRouter>,
       );
@@ -93,7 +107,13 @@ describe('<PokemonPage />', () => {
 
     await act(async () => {
       render(
-        <MemoryRouter initialEntries={['/pokemon/eevee']}>
+        <MemoryRouter
+          initialEntries={['/pokemon/eevee']}
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <PokemonPage />
         </MemoryRouter>,
       );
@@ -107,7 +127,13 @@ describe('<PokemonPage />', () => {
 
     await act(async () => {
       render(
-        <MemoryRouter initialEntries={['/pokemon/eevee']}>
+        <MemoryRouter
+          initialEntries={['/pokemon/eevee']}
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <PokemonPage previous={previous} next={next} />
         </MemoryRouter>,
       );
@@ -128,7 +154,13 @@ describe('<PokemonPage />', () => {
 
     await act(async () => {
       render(
-        <MemoryRouter initialEntries={['/pokemon/eevee']}>
+        <MemoryRouter
+          initialEntries={['/pokemon/eevee']}
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <PokemonPage />
         </MemoryRouter>,
       );

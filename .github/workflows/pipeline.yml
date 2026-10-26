@@ -20,3 +20,7 @@ jobs:
         run: npm run build
       - name: test
         run: npm test
+      - name: e2e tests - playwright
+        run: npm run test:e2e:playwright
+      - name: e2e tests - cypress
+        run: npm run test:e2e:cypress

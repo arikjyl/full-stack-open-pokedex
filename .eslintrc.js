@@ -20,7 +20,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['.eslintrc.js', 'app.js'],
+      files: ['.eslintrc.js', 'app.js', 'cypress.config.js'],
       env: {
         node: true,
       },
@@ -29,6 +29,13 @@ module.exports = {
       files: ['app.js'],
       rules: {
         'no-console': 'off',
+      },
+    },
+    {
+      files: ['e2e-tests/cypress/**/*.cy.js'],
+      globals: {
+        cy: 'readonly',
+        Cypress: 'readonly',
       },
     },
   ],

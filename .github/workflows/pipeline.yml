@@ -20,6 +20,19 @@ jobs:
         run: npm run build
       - name: test
         run: npm test
+      - name: install Playwright browser
+        run: npx playwright install --with-deps chromium
+      - name: start app
+        run: |
+          npm run start-prod > /tmp/pokedex.log 2>&1 &
+          for attempt in {1..30}; do
+            if curl --fail --silent http://localhost:5001/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/pokedex.log
+          exit 1
       - name: e2e tests - playwright
         run: npm run test:e2e:playwright
       - name: e2e tests - cypress

@@ -75,6 +75,7 @@ function mockPokeApi({ failList = false, failPokemon } = {}) {
 
 describe('Pokedex', function () {
   it('front page can be opened', function () {
+    mockPokeApi();
     cy.visit('/');
     cy.contains('ivysaur').should('be.visible');
     cy.contains(

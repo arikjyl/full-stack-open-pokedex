@@ -37,3 +37,5 @@ jobs:
         run: npm run test:e2e:playwright
       - name: e2e tests - cypress
         run: npm run test:e2e:cypress
+      - name: Trigger deployment
+        run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_DEPLOY_HOOK_KEY }}

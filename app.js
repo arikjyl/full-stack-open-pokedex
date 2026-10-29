@@ -10,6 +10,12 @@ app.get('/version', (req, res) => {
   res.send('1');
 });
 
+app.get('/health', (req, res) => {
+  // eslint-disable-next-line no-constant-condition
+  if (true) throw 'error...  ';
+  res.send('ok');
+});
+
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
 });
